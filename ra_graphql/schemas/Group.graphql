@@ -1,0 +1,15 @@
+type Group {
+  id: UUID!
+  group: String!
+}
+
+type GroupInResp {
+  error: String
+  group: Group
+}
+
+type GroupsInResp {
+  error: String
+  groups: [Group]
+  total_count: Int
+}

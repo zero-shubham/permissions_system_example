@@ -1,0 +1,12 @@
+type Token {
+  access_token: String!
+  token_type: String!
+}
+type LoginResp {
+  error: String
+  token: Token
+}
+type LogoutResp {
+  error: String
+  logged_out: Boolean
+}

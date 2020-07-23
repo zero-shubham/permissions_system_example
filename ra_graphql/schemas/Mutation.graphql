@@ -1,0 +1,34 @@
+type Mutation {
+  """
+  Login with email and password get back error/ token obj
+  {
+    access_token: jwt,
+    token_type: 'bearer'
+  }
+  """
+  login(email: String!, password: String!): LoginResp!
+
+  """
+  Invalidates a token
+  """
+  logout: LogoutResp! @is_authenticated
+  """
+  create an Author account
+  """
+  create_author(details: AuthorCreation!): AuthorInResp!
+  """
+  Add a new user-group
+  """
+  create_group(group: String!): GroupInResp!
+    @has_permission(resource: "_ps_user_groups", permission: "create")
+  """
+  Add new permission record for specified user-group on specified resource
+  """
+  create_permission(details: PermissionCreation!): PermissionInResp!
+    @has_permission(resource: "_ps_permissions", permission: "create")
+  """
+  update existing permission for speicified id
+  """
+  update_permission(details: PermissionUpdation!): PermissionInResp!
+    @has_permission(resource: "_ps_permissions", permission: "update")
+}

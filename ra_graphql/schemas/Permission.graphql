@@ -1,0 +1,37 @@
+type Permission {
+  id: UUID!
+  group: String!
+  resource: String!
+  create: Boolean!
+  read: Boolean!
+  update: Boolean!
+  delete: Boolean!
+}
+
+type PermissionInResp {
+  error: String
+  permission: Permission
+}
+
+type PermissionsInResp {
+  error: String
+  permissions: [Permission]
+  total_count: Int
+}
+
+input PermissionCreation {
+  group: String!
+  resource: String!
+  create: Boolean!
+  read: Boolean!
+  update: Boolean!
+  delete: Boolean!
+}
+
+input PermissionUpdation {
+  create: Boolean
+  read: Boolean
+  update: Boolean
+  delete: Boolean
+  id: UUID!
+}

@@ -1,0 +1,29 @@
+type Author {
+  """
+  Author object
+  """
+  id: UUID!
+  user_name: String!
+  group: String!
+  email: String!
+  phone: String!
+  created_at: Datetime!
+  updated_at: Datetime!
+}
+
+input AuthorCreation {
+  email: String!
+  phone: String!
+  password: String!
+}
+
+type AuthorsInResp {
+  error: String
+  authors: [Author]
+  total_count: Int
+}
+
+type AuthorInResp {
+  error: String
+  author: Author
+}

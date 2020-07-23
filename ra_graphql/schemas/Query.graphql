@@ -1,0 +1,57 @@
+directive @is_authenticated on FIELD_DEFINITION
+directive @has_permission(
+  resource: String
+  permission: String
+) on FIELD_DEFINITION
+type Query {
+  """
+  Get all users
+  """
+  users(offset: Int = 0, limit: Int = 10): UsersInResp!
+    @has_permission(resource: "_ps_users", permission: "read")
+  """
+  Get user by id or email.
+  """
+  user(id: UUID, email: String): UserInResp!
+    @has_permission(resource: "_ps_users", permission: "read")
+  """
+  Get all groups
+  """
+  groups(offset: Int = 0, limit: Int = 10): GroupsInResp!
+    @has_permission(resource: "_ps_user_groups", permission: "read")
+
+  """
+  Get group by id
+  """
+  group(id: UUID!): GroupInResp!
+    @has_permission(resource: "_ps_user_groups", permission: "read")
+  """
+  Get all authors
+  """
+  authors(offset: Int = 0, limit: Int = 10): AuthorsInResp!
+    @has_permission(resource: "authors", permission: "read")
+
+  """
+  Get author by id or email
+  """
+  author(id: UUID, email: String): AuthorInResp!
+    @has_permission(resource: "authors", permission: "read")
+
+  """
+  get all permissions
+  """
+  permissions(offset: Int = 0, limit: Int = 10): PermissionsInResp!
+    @has_permission(resource: "_ps_permissions", permission: "read")
+
+  """
+  get permission by id
+  """
+  permission(id: UUID!): PermissionInResp!
+    @has_permission(resource: "_ps_permissions", permission: "read")
+
+  """
+  get all resources
+  """
+  resources(offset: Int = 0, limit: Int = 10): ResourcesInResp!
+    @has_permission(resource: "_ps_resources", permission: "read")
+}

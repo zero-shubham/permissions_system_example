@@ -1,0 +1,22 @@
+scalar UUID
+scalar Datetime
+
+type User {
+  """
+  User object
+  """
+  id: UUID!
+  user_name: String!
+  group: String!
+}
+
+type UsersInResp {
+  error: String
+  users: [User]
+  total_count: Int
+}
+
+type UserInResp {
+  error: String
+  user: User
+}

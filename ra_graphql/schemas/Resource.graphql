@@ -1,0 +1,11 @@
+type Resource {
+  id: UUID!
+  resource_table: String!
+  resource_name: String!
+}
+
+type ResourcesInResp {
+  error: String
+  resources: [Resource]
+  total_count: Int
+}
